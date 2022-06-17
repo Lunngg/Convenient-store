@@ -1,0 +1,121 @@
+
+package project1;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Collections;
+import java.util.Comparator;
+
+
+public class hanghoalist 
+{
+    ArrayList<hanghoa> list= new ArrayList<hanghoa>();
+    
+    public hanghoalist()
+    {
+    }
+    
+    public void nhapdanhsach()
+        {
+        Scanner sc = new Scanner(System.in);
+        String ans = " "; 
+    do 
+           {
+           hanghoa hh = new hanghoa();
+           hh.Input(); 
+        
+           list.add(hh); //thêm một phần tử vào danh sách
+        
+           System.out.println("có muốn nhập tiếp hăm (y/n)"); 
+           ans = sc.nextLine();
+           }
+    
+    while
+        (ans.compareToIgnoreCase("y") == 0);//nếu mà yes thì nhập tiếp 
+        }
+    
+    
+    
+    public void xuatdanhsach()
+    {
+        hanghoa.PrintTitle();
+        for(hanghoa hh: list)
+        {
+            System.out.println(hh);  
+        }
+    }
+    
+    
+public void xeptheoID()
+    { 
+        System.out.println("Bạn đã chọn chức năng săp xếp theo ID");
+        Comparator<hanghoa> objID = new Comparator<hanghoa>()
+        {
+        @Override
+            public int compare(hanghoa t1, hanghoa t2) 
+            {
+            if(t1.ID > t2.ID)
+                return 1;
+            return -1;
+            }
+        };
+        Collections.sort(list, objID);
+        System.out.println(list);// sắp xếp + in 
+    }
+
+
+
+public void XepTheoTen()
+    {
+    System.out.println("Bạn đã chọn chức năng sắp xếp theo tên");
+    Comparator<hanghoa> objname = new Comparator<hanghoa>()
+        {
+        @Override
+        public int compare(hanghoa t, hanghoa t1) 
+                {
+                return t.getName(). compareTo(t1.getName());
+                }
+        };
+        Collections.sort(list, objname);
+        System.out.println(list);
+    }
+    
+
+
+{/*public void timID()
+        {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("vui lòng nhập vào ID muốn tìm");
+        int x = Integer.parseInt(sc.nextLine());
+        for (hanghoa hh:list)
+                {
+                if (hh.getID() == x) 
+                    System.out.println(hh.toString());
+                else
+                    System.out.println("không tìm thấy ID");
+                }
+        }*/}
+
+public hanghoa searchID(int x)
+{
+    for(hanghoa hh : list) //duyệt danh sách hàng hóa với mỗi phần tử là hh
+    {
+        if(hh.getID() == x)
+            return hh;
+    }
+    return null;
+}
+
+
+
+public hanghoa timtensp(String name) 
+    {
+    for(hanghoa hh : list) 
+    {
+        if(hh.getName().compareToIgnoreCase(name)==0)
+            return hh;
+    }
+    return null;
+}
+
+}

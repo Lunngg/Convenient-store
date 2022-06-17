@@ -1,0 +1,140 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package project1;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import static project1.Walmart.tentiem;
+
+public class hanghoa extends Walmart
+{
+        static int dem=0;
+        int ID=0;
+        String name;
+        int soluong;
+        float gia;
+        ArrayList<hanghoa> Listhanghoa = new ArrayList<>();
+        
+        
+        
+    public hanghoa()
+        {
+       ID = ++dem;
+       soluong = ++dem;
+        }
+
+    
+    public hanghoa(String name, int soluong, float gia) 
+        {
+        ID = ++dem;
+        soluong = ++dem;
+        this.name = name;
+        this.soluong = soluong;
+        this.gia = gia;
+        }
+    
+
+    
+    public int getID() 
+        {
+        return ID;
+        }
+
+    public void setID(int ID) 
+        {
+        this.ID = ID;
+        }
+
+    public String getName() 
+        {
+        return name;
+        }
+
+    public void setName(String name) 
+        {
+        this.name = name;
+        }
+
+    public int getSoluong() 
+        {
+        return soluong;
+        }
+
+    public void setSoluong(int soluong) 
+        {
+        this.soluong = soluong;
+        }
+
+    public float getGia() 
+        {
+        return gia;
+        }
+
+    public void setGia(float gia) 
+        {
+        this.gia = gia;
+        }
+    
+    
+    
+    public void Input()
+    {
+    Scanner sc = new Scanner(System.in);     
+    System.out.println("Nhập ID: ");
+    ID = Integer.parseInt(sc.nextLine());
+    System.out.println("Nhập tên sản phẩm: ");
+    name = sc.nextLine();
+    System.out.println("Nhập số lượng(kg): ");
+    soluong = Integer.parseInt(sc.nextLine());
+    System.out.println("Nhập giá: ");
+    gia = Float.parseFloat(sc.nextLine());
+    }
+    
+    
+    
+    public float thanhtien()
+    {
+    return soluong * gia * 1f;  
+    }
+    
+    
+    
+    @Override
+    public String toString() //quy định cách in ra nguyên hàng
+    {
+        return String.format("%d%10s%15d%15f%17f" , ID , name , soluong, gia , thanhtien());
+    }
+    
+    
+    
+    public static void PrintTitle()
+            
+    {
+        System.out.println(tentiem);
+        System.out.println("ID      name         số lượng       giá         tổng tiền" );
+    }
+    
+    
+    
+    public void Output()
+    {
+    System.out.println("thong tin san pham la:  " + ID +"\t" + name + "\t " + soluong + "\t" + gia + "\t" + thanhtien());
+    }   
+    
+    
+    
+public int compare(Project1 p1, Project1 p2) 
+        {
+	if (p1.ID > p2.ID)
+            return 1;
+	else if (p1.ID == p2.ID)
+            return 0;
+                    
+        return -1;
+        }
+}
+
+

@@ -1,0 +1,90 @@
+
+package project1;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Comparator;
+import java.util.ArrayList;
+
+
+
+public abstract class Project1 extends hanghoa implements Comparator<Project1>
+{
+    ArrayList list = new ArrayList();
+    
+
+    
+ public static void menu()
+        {
+            System.out.println("1. nhập thông tin sản phẩm");
+            System.out.println("2. xuất thông tin sản phẩm");
+            System.out.println("3. Chức năng tìm");
+            System.out.println("4. Chức năng sắp xếp theo ID");
+            System.out.println("5. Chức năng sắp xếp theo tên");
+            System.out.println("6. Chức năng tìm theo tên sản phẩm");
+        }    
+ 
+ 
+ public static void main(String[] args) 
+        {
+            hanghoalist listhh = new hanghoalist();
+            Scanner sc = new Scanner(System.in);
+            
+            int chon;
+           
+            do
+            {
+               menu();
+               chon = Integer.parseInt(sc.nextLine());
+                       switch(chon)
+                           {
+                           case 1: listhh.nhapdanhsach(); break; 
+                           case 2: listhh.xuatdanhsach(); break;
+                           
+                           case 3: 
+                           System.out.println("vui lòng nhập vào ID muốn tìm: ");
+                           int x = Integer.parseInt(sc.nextLine());
+                                hanghoa hh = listhh.searchID(x);
+                                if(hh == null)
+                                {
+                                    System.out.println("không tìm thấy sản phẩm");
+                                    System.out.println("\n");
+                                }
+                                 else 
+                                {
+                                    System.out.println("tìm thấy sản phẩm");
+                                    System.out.println(hh);
+                                    System.out.println("\n");
+                                }
+                           break;
+                           
+                           case 4: listhh.xeptheoID();break;
+                           case 5: listhh.XepTheoTen();break;
+                           
+                           case 6:  
+                               System.out.println("vui lòng nhập vào tên sản phẩm muốn tìm: ");
+                           String name = sc.nextLine();
+                                hh = listhh.timtensp(name);
+                                if(hh == null)
+                                {
+                                    System.out.println("không tìm thấy sản phẩm");
+                                    System.out.println("\n");
+                                }
+                                 else 
+                                {
+                                    System.out.println("tìm thấy sản phẩm");
+                                    System.out.println(hh);
+                                    System.out.println("\n");
+                                } break;
+                           default:System.out.println("ket thuc"); break;
+                           }
+            }while(chon !=0); 
+        }
+}
+
+   
+
+
+
